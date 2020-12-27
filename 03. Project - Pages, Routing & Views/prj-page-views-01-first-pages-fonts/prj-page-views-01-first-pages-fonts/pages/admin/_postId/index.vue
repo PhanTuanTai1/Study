@@ -1,27 +1,27 @@
 <template>
-    <div class="admin-post-page">
-        <section class="update-form">
-            <AdminPostForm :post="loadedPost"/>
-        </section>
-    </div>
+  <div class="admin-post-page">
+    <section class="update-form">
+      <AdminPostForm :post="loadedPost" />
+    </section>
+  </div>
 </template>
 
 <script>
-import AdminPostForm from "@/components/Admin/AdminPostForm"
+import AdminPostForm from "@/components/Admin/AdminPostForm";
 export default {
-  data () {
+  data() {
     return {
-        loadedPost:{
-            author: "Tai",
-            title: "My awesome Post",
-            content: "Super amazing, thanks for that!",
-            thumnailLink: ''
-
-        }
-    }
+      loadedPost: {
+        author: "Tai",
+        title: "My awesome Post",
+        content: "Super amazing, thanks for that!",
+        thumnailLink: "",
+      },
+    };
   },
-    components:{
-        AdminPostForm
-    }
-}
+  components: {
+    AdminPostForm,
+  },
+  layout: 'admin'
+};
 </script>

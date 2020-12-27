@@ -18,7 +18,7 @@ export default {
     thumbnail: { 
       type: String,
       default: null,
-      required: true
+      required: false
     },
     previewText: { 
       type: String,

@@ -1,7 +1,11 @@
 <template>
     <section class="post-link">
-          <PostPreview :is-admin="isAdmin" id="1" title="Blog title 1" previewText="Preview Text 1"/>
-          <PostPreview :is-admin="isAdmin" id="2" title="Blog title 2" previewText="Preview Text "/>
+          <PostPreview v-for="post in posts" 
+          :key="post.id" 
+          :is-admin="isAdmin" 
+          :id="post.id" 
+          :title="post.title" 
+          :previewText="post.previewText"/>
     </section>
 </template>
 
@@ -23,6 +27,10 @@ export default {
       isAdmin: {
           type: Boolean,
           default: false
+      },
+      posts: {
+          type: Object,
+          require: true
       }
   },
     components: {

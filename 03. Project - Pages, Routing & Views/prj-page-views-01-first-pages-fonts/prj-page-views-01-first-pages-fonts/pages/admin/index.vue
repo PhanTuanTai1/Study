@@ -1,22 +1,56 @@
 <template>
-    <div class="admin-page">
-        <section class="new-post">
-            <button @click="$router.push('/admin/new-post')">Create Post</button>
-        </section>
-        <section>
-            <h1>Existing Post</h1>
-            <PostList isAdmin/>
-        </section>
-    </div>
+  <div class="admin-page">
+    <section class="new-post">
+      <AppButton @click="$router.push('/admin/new-post')"
+        >Create Post</AppButton
+      >
+    </section>
+    <section>
+      <h1>Existing Post</h1>
+      <PostList isAdmin :posts="loadedPosts" />
+    </section>
+  </div>
 </template>
 
 <script>
-import PostList from "@/components/Posts/PostList"
+import PostList from "@/components/Posts/PostList";
+import AppButton from "@/components/UI/AppButton";
 export default {
-    components:{
-        PostList
-    }
-}
+  asyncData(context, callback) {
+    setTimeout(() => {
+      callback(null, {
+        loadedPosts: [
+          {
+            id: 1,
+            title: "First Post",
+            previewText: "This is our first post",
+          },
+          {
+            id: 2,
+            title: "Second Post",
+            previewText: "This is our Second post",
+          },
+          {
+            id: 3,
+            title: "Third Post",
+            previewText: "This is our Third post",
+          },
+        ],
+      });
+    }, 1500);
+  },
+  created() {},
+  // data () {
+  //   return {
+  //     loadedPosts:[]
+  //   }
+  // },
+  layout: "admin",
+  components: {
+    PostList,
+    AppButton,
+  },
+};
 </script>
 
 <style scoped>
